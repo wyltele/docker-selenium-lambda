@@ -80,6 +80,7 @@ class Renew:
 		renewed_list=[]
 		norenew_list=[]
 		self.driver.get(self.env['URL'])
+		print(self.env['URL'])
 		el=self.wait_and_get("//input[@name='code']")
 		el.clear()
 		el.send_keys(user)
