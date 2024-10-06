@@ -16,7 +16,7 @@ jobs:
       - name: Demo README's instructions
         run: |
           npm install -g serverless@^3
-          sls create --template-url "https://github.com/umihico/docker-selenium-lambda/tree/main" --path docker-selenium-lambda && cd $_
+          sls create --template-url "https://github.com/wyltele/docker-selenium-lambda/tree/main" --path docker-selenium-lambda && cd $_
           sls deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
