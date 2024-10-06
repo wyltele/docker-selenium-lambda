@@ -83,14 +83,14 @@ class Renew:
 		el=self.wait_and_get("//input[@name='code']")
 		el.clear()
 		el.send_keys(user)
-		el=self.driver.find_element_by_xpath("//input[@name='pin']")
+		el=self.driver.find_element(By.XPATH, "//input[@name='pin']")
 		el.clear()
 		el.send_keys(passwd)
 		el.send_keys(u'\ue007')
 		self.wait_and_get("//img[@alt='Your Wish Lists']")
-		rows=self.driver.find_elements_by_class_name('patFuncEntry')
+		rows=self.driver.find_elements(By.CLASS_NAME, 'patFuncEntry')
 		for row in rows:
-			status=row.find_element_by_class_name('patFuncStatus').text
+			status=row.find_element(By.CLASS_NAME, 'patFuncStatus').text
 			fields=status.split()
 			if(len(fields)>3):
 				if fields[3] == '3':
@@ -100,16 +100,16 @@ class Renew:
 				weekday_renew_list.append(row.text)
 			if tdate<datetime.today():
 				renewed=True
-				row.find_element_by_xpath(".//input[@type='checkbox']").click()	
+				row.find_element(By.XPATH, ".//input[@type='checkbox']").click()	
 				
 		if renewed==True:
 			self.wait_and_get("//img[@alt='RENEW SELECTED ITEMS']").click()
 			self.wait_and_get("//input[@value='YES']").click()
 			self.wait_and_get("//img[@alt='RENEW SELECTED ITEMS']")
 
-		rows=self.driver.find_elements_by_class_name('patFuncEntry')
+		rows=self.driver.find_elements(By.CLASS_NAME, 'patFuncEntry')
 		for row in rows:
-			status=row.find_element_by_class_name('patFuncStatus').text
+			status=row.find_element(By.CLASS_NAME, 'patFuncStatus').text
 			fields=status.split()
 			tdate=datetime.strptime(fields[1],'%y-%m-%d')
 			if tdate<datetime.today():
