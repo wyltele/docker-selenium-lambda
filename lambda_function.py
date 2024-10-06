@@ -5,5 +5,5 @@ from renew_book import Renew
 
 
 
-def lambda_handler(event, context):
+def lambda_handler(event=None, context=None):
 	Renew().run()
