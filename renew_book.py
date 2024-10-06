@@ -35,7 +35,7 @@ class Renew:
 		options.add_argument(f"--disk-cache-dir={mkdtemp()}")
 		options.add_argument("--remote-debugging-port=9222")
 
-		chrome = webdriver.Chrome(options=options, service=service)
+		self.driver = webdriver.Chrome(options=options, service=service)
 		
 		
 		env_vars = ['CREDENTIALS','URL','MAILKEY','SANDBOX','FROMEMAIL','TOEMAIL']
